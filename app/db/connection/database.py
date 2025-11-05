@@ -8,9 +8,8 @@ DB_PASSWORD = envs.POSTGRES_PASSWORD
 DB_HOST = envs.POSTGRES_HOST
 DB_PORT = envs.POSTGRES_PORT
 DB_NAME = envs.POSTGRES_DB
-SSL_MODE = envs.SSL_CONNECT
 
-database_url = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}?sslmode={SSL_MODE}"
+database_url = f"postgresql+psycopg2://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 engine = create_engine(database_url, future=True)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
